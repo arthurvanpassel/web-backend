@@ -29,6 +29,24 @@
         return $array;
     }
 
+    $testArray = array("Elon Musk", "Batman", "Barrack Obama");
+
+    $testFunctie = drukArrayAf($testArray);
+
+    function drukArrayAf($array)
+    {
+        $results = array();
+        
+        $naam = key(end($GLOBALS));
+        
+        foreach ($array as $key => $value)
+        {
+            $results[] = $naam . "[" . $key . "]" . " heeft als waarde " . $value;
+        }
+        
+        return $results;
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -48,5 +66,11 @@
     <p>De string is: <?= $string ?></p>
     <p>uppercase: <?php echo toUppercase($string)['uppercase'] ?></p>
     <p>lengte: <?php echo toUppercase($string)['length'] ?></p>
+    
+    <h2>Deel 2</h2>
+    
+    <?php foreach($testFunctie as $value): ?>
+        <p><?= $value ?></p>
+    <?php endforeach ?>
 </body>
 </html>
