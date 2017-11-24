@@ -17,6 +17,28 @@
             $counter[$value] = 1;
     }
 
+    // DEEL 2
+
+    $textCharsTog = array();
+    $counter2 = array();
+
+    $textCharsTog = array_map('strtoupper',$textCharsRev);
+    
+    $textCharsAlph = array();
+
+    foreach($textCharsTog as $key => $value)
+    {
+        if (ctype_alpha($value))
+            $textCharsAlph[$key] = $value;
+    }
+
+    foreach($textCharsAlph as $value)
+    {
+        if (isset($counter2[$value]))
+            $counter2[$value]++;
+        else
+            $counter2[$value] = 1;
+    }
 ?>
 
 
@@ -30,6 +52,10 @@
    <h1>opdracht foreach deel 1</h1>
    
    <pre><?php var_dump($counter) ?></pre>
+   
+   <h1>Opdracht deel 2</h1>
+   
+   <pre><?php var_dump($counter2) ?></pre>
     
 </body>
 </html>
