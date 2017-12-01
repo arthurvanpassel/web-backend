@@ -29,6 +29,44 @@
         return (($charAmount / $length) * 100);
     }
 
+
+    // DEEL 2
+
+    $pigHealth = 5;
+    $maximumThrows = 8;
+
+    function calculateHit()
+    {
+        global $pigHealth;
+        $hitChance = rand(0,9);
+        
+        if  ($hitChance <= 3)
+        {
+            $pigHealth--;
+            return "Raak! Er zijn nog maar ".$pigHealth." varkens over.";
+        }
+        else
+            return "Mis! Nog ".$pigHealth." varkens in het team";
+    }
+
+    function launchAngryBird()
+    {
+        static $timesFunctionUsed = 0;
+        global $maximumThrows;
+        global $pigHealth;
+        
+        if($maximumThrows > timesFunctionUsed)
+        {
+            $timesFunctionUsed++;
+            launchAngryBirds();
+        }
+        
+        if($pigHealth>0)
+            return 'Verloren!';
+        else
+            return 'Gewonnen!';
+    }
+
 ?>
 
 <!DOCTYPE html>
