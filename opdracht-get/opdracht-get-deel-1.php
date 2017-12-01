@@ -98,23 +98,19 @@
 <body>
    <h1>Opdracht get deel 1</h1>
    
-   <?php if ( !$nietBestaandArtikel ): ?>
-       <div class="container">
-			<?php foreach ( $artikels as $id => $artikel ): ?>
-				<article class="<?php echo ( !$individueelArtikel ) ? 'multiple': 'single' ; ?>">
-					<h1><?= $artikel['titel'] ?></h1>
-					<p><?= $artikel['datum'] ?></p>
-					<img src="<?= $artikel['afbeelding'] ?>" alt="<?= $artikel['afbeeldingBeschrijving'] ?>">
-					<p><?= ( !$individueelArtikel ) ? str_replace ( "\r\n", "</p><p>", substr( $artikel['inhoud'], 0, 50 ) ) . '...': str_replace ( "\r\n", "</p><p>",$artikel['inhoud'] ) ; ?></p>
-					<?php if ( !$individueelArtikel ): ?>
-						<a href="opdracht-get-deel-1.php?id=<?= $id ?>">Lees meer</a>
-					<?php endif ?>
-				</article>
-			<?php endforeach ?>
-		</div>
-   <?php else: ?>
-		<p>Het artikel met id <?php echo $id ?> bestaat niet. Probeer een ander artikel.</p>
-	<?php endif ?>
+    <div class="container">
+        <?php foreach ( $artikels as $id => $artikel ): ?>
+            <article class="<?php echo ( !$individueelArtikel ) ? 'multiple': 'single' ; ?>">
+                <h2><?= $artikel['titel'] ?></h2>
+                <p><?= $artikel['datum'] ?></p>
+                <img src="<?= $artikel['afbeelding'] ?>" alt="<?= $artikel['afbeeldingBeschrijving'] ?>">
+                <p><?= ( !$individueelArtikel ) ? str_replace ( "\r\n", "</p><p>", substr( $artikel['inhoud'], 0, 50 ) ) . '...': str_replace ( "\r\n", "</p><p>",$artikel['inhoud'] ) ; ?></p>
+                <?php if ( !$individueelArtikel ): ?>
+                    <a href="opdracht-get-deel-1.php?id=<?= $id ?>">Lees meer</a>
+                <?php endif ?>
+            </article>
+        <?php endforeach ?>
+    </div>
     
 </body>
 </html>
