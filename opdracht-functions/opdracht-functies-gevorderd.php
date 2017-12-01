@@ -34,6 +34,7 @@
 
     $pigHealth = 5;
     $maximumThrows = 8;
+    $spelverloop = array();
 
     function calculateHit()
     {
@@ -43,10 +44,18 @@
         if  ($hitChance <= 3)
         {
             $pigHealth--;
-            return "Raak! Er zijn nog maar ".$pigHealth." varkens over.";
+            if ($pigHealth == 1)
+                return "Raak! Er is nog maar ".$pigHealth." varken over.";
+            elseif ($pigHealth == 0)
+                return "Raak! Alle varkens zijn geraakt!";
+            else
+                return "Raak! Er zijn nog maar ".$pigHealth." varkens over.";
         }
         else
-            return "Mis! Nog ".$pigHealth." varkens in het team";
+            if ($pigHealth == 1)
+                return "Mis! Nog ".$pigHealth." varken in het team.";
+            else
+                return "Mis! Nog ".$pigHealth." varkens in het team.";
     }
 
     function launchAngryBird()
@@ -54,19 +63,23 @@
         static $timesFunctionUsed = 0;
         global $maximumThrows;
         global $pigHealth;
+        global $spelverloop;
+        global $endresult;
         
-        if($maximumThrows > timesFunctionUsed)
+        if($maximumThrows > $timesFunctionUsed && $pigHealth > 0)
         {
             $timesFunctionUsed++;
-            launchAngryBirds();
+            $spelverloop[] = calculateHit();
+            launchAngryBird();
         }
         
         if($pigHealth>0)
-            return 'Verloren!';
+            $endresult = 'Verloren!';
         else
-            return 'Gewonnen!';
+            $endresult = 'Gewonnen!';
     }
 
+    launchAngryBird();
 ?>
 
 <!DOCTYPE html>
@@ -83,6 +96,16 @@
     <p>Functie 2: de needle 'a' komt <?= berekenProcent2('a') ?>% voor in de hash key '<?= $md5HashKey ?>'</p>
     
     <p>Functie 2: de needle '8' komt <?= berekenProcent2('8') ?>% voor in de hash key '<?= $md5HashKey ?>'</p>
+    
+    <h1>Deel 2</h1>
+    
+    <ul>
+       <?php foreach($spelverloop as $resultaat): ?>
+            <li><?= $resultaat ?></li>
+        <?php endforeach ?>
+        <li><?= $endresult ?></li>
+    </ul>
+    
     
     
 </body>
