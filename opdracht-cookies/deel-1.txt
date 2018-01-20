@@ -1,1 +1,10 @@
- jan,paswoord01
+ {
+    "0" : {
+        "username" : "jan",
+        "password" : "paswoord01"
+    },
+    "1" : {
+        "username" : "arthur",
+        "password" : "paswoord02"
+    }
+ }
