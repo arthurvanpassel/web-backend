@@ -1,0 +1,10 @@
+    <h1><?= $artikel[ 'title' ] ?></h1>
+	<article class="individual">
+		<p><?= $artikel[ 'body' ] ?></p>
+	</article>
+	<p>
+        <?php foreach ($artikel['tags'] as $tag): ?>
+            <?= $tag ?> -
+        <?php endforeach ?>
+    </p>
+</section>

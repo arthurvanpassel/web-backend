@@ -1,0 +1,16 @@
+<h1>Nieuws</h1>
+    <?php foreach ( $artikels as $id => $artikel): ?>
+		<article>
+			<h1><?= $artikel[ 'title' ] ?></h1>
+			<p><?= $artikel[ 'body' ] ?></p>
+			<p>
+			    <?php foreach ($artikel['tags'] as $tag): ?>
+			        <?= $tag ?> -
+                <?php endforeach ?>
+			</p>
+            
+			<a href="opdracht-include-require.php?artikel=<?= $id ?>">lees meer</a>
+		</article>
+	<?php endforeach ?>
+
+</section>
